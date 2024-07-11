@@ -20,9 +20,22 @@ func repl() {
 		if len(cleanedInput) == 0 {
 			continue
 		}
-		fmt.Println("Echoing: ", cleanedInput)
-		// command := cleanedInput[0]
-		// availableCommands := commands() ** Will get to this later
+
+		commandInput := cleanedInput[0]
+		availableCommands := commands()
+
+		command, ok := availableCommands[commandInput]
+
+		if !ok {
+			fmt.Println("That command is not available. Try 'help' for further assistance.")
+			continue
+		}
+
+		err := command.callback()
+
+		if err != nil {
+			fmt.Println(err)
+		}
 
 	}
 }
