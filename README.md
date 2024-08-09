@@ -1,1 +1,1 @@
-# golanf-pokedex
+# golang-pokedex
